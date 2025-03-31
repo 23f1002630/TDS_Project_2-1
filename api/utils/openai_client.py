@@ -9,7 +9,7 @@ import shutil
 import subprocess
 from typing import Optional, Dict, Any, List
 from dotenv import load_dotenv
-from app.utils.functions import *
+from api.utils.functions import *
 
 load_dotenv()
 
@@ -50,7 +50,7 @@ async def get_openai_response(question: str, file_path: Optional[str] = None) ->
         and ("jsonhash" in question.lower() or "hash button" in question.lower())
         and file_path
     ):
-        from app.utils.functions import convert_keyvalue_to_json
+        from api.utils.functions import convert_keyvalue_to_json
 
         # Pass the question to the function for context
         result = await convert_keyvalue_to_json(file_path)
@@ -83,7 +83,7 @@ async def get_openai_response(question: str, file_path: Optional[str] = None) ->
     #     "q-unicode-data.zip" in question.lower()
     #     or ("different encodings" in question.lower() and "symbol" in question.lower())
     # ) and file_path:
-    #     from app.utils.functions import process_encoded_files
+    #     from api.utils.functions import process_encoded_files
 
     #     # Extract the target symbols from the question
     #     target_symbols = ['"', "†", "Ž"]
@@ -96,7 +96,7 @@ async def get_openai_response(question: str, file_path: Optional[str] = None) ->
         "q-unicode-data.zip" in question.lower()
         or ("different encodings" in question.lower() and "symbol" in question.lower())
     ) and file_path:
-        from app.utils.functions import process_encoded_files
+        from api.utils.functions import process_encoded_files
 
         # Extract the target symbols from the question - use the correct symbols
         target_symbols = [
